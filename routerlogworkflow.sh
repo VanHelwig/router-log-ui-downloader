@@ -1,4 +1,4 @@
 #!/bin/bash 
 
-/home/keenanhelwig/Scripts/Python/downloadrouterlogs.py
-sudo /home/keenanhelwig/Scripts/Bash/routerlogtransfer.sh
+/home/user/Scripts/Python/downloadrouterlogs.py
+sudo /home/user/Scripts/Bash/routerlogtransfer.sh
