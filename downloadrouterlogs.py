@@ -12,7 +12,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 
 # Load the YAML configuration file
-config_path = '/home/keenanhelwig/Scripts/Config/YAML/routerlogconfig.yml'
+config_path = '/home/user/Scripts/Config/YAML/routerlogconfig.yml'
 with open(config_path, 'r') as config_file:
     config = yaml.safe_load(config_file)
 
