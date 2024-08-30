@@ -3,7 +3,7 @@ Downloads logs from router web UI
 
 This repo is a collection of scripts and configuration files 
 designed to collect logs from a routers web ui. it was made to circumvent an issue with certain brands of hardware 
-not allowing ssh connection asside from their designated web management tool. 
+not allowing SSH connection aside from their designated web management tool. 
 
 The default configurations for the script assume a tp-link router, and a linux operating system. 
 Most of the configuration will be done in the .yaml configuration file,
