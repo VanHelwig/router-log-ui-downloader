@@ -10,5 +10,5 @@ Most of the configuration will be done in the .yaml configuration file,
 
 Be mindful that there are a few dependencies involved, 
 you will have to install the selenium package for python
-and download and install the Geckodriver for interacting with firefox
-keep note of where you save the driver as the filepath will need to be referenced in the config file
+and download and install the Geckodriver for interacting with firefox.
+Keep note of where you save the driver as the filepath will need to be referenced in the config file
