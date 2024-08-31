@@ -11,4 +11,8 @@ Most of the configuration will be done in the .yaml configuration file,
 Be mindful that there are a few dependencies involved, 
 you will have to install the selenium package for python
 and download and install the Geckodriver for interacting with firefox.
-Keep note of where you save the driver as the filepath will need to be referenced in the config file
+Keep note of where you save the driver as the filepath will need to be referenced in the config file.
+
+Also of note is that the config yaml file stores the router admin password. 
+For demo purposes i have left the password as 'password' in plaintext, but I highly recommend against using this methodology in your production environment.
+I recommend at least taking the password as an environment variable on the server you run the script from if you do not have a secrets manager.
