@@ -5,8 +5,9 @@ This repo is a collection of scripts and configuration files
 designed to collect logs from a router's web UI. It was made to circumvent an issue with certain brands of hardware 
 not allowing SSH connection aside from their designated web management tool. 
 
-The default configurations for the script assume a tp-link router, and a linux operating system. 
-Most of the configuration will be done in the YAML configuration file.
+The default configurations for the script assume a tp-link router and a Linux operating system. 
+Most of the configuration will be done in the YAML configuration file, including router IP, relevant URL's for the GUI, 
+and xpaths of the HTML source for relevant portions of the web UI (username/password fields, download buttons, etc.)
 
 Be mindful that there are a few dependencies involved; 
 you will have to install the Selenium web framework package for Python
