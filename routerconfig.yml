@@ -1,21 +1,15 @@
-
-# repleave this with your router's ip address and password 
 router:
-  ip: 192.168.0.1
-  password: password
+  ip: "192.168.1.1"
+  password: "your_router_password"
 
-# save the ip as a url and reference the submenu where the download link is as a url
 urls:
-  router_url: http://192.168.0.1
-  submenu: http://192.168.0.1/webpages/index.html?t=b638027e#sysLog
+  router_url: "http://192.168.1.1/login"
+  submenu: "http://192.168.1.1/submenu"
 
-# add any xpaths needed in the html source for the webpage
-# reference the password field xpath and the download button object
 xpaths:
-  password_field: /html/body/div[1]/div/div[1]/div/div[1]/div[2]/div[3]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/span[2]/input[1]
-  download_button: /html/body/div[1]/div/div[1]/div/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[2]/div[2]/div[2]/div[2]/div[4]/div[2]/div[1]/a/span[2]
+  password_field: '//*[@id="password"]'
+  download_button: '//*[@id="download"]'
 
-# additional settings for download path and location of geckodriver
 settings:
-  download_dir: /home/user/Downloads
-  driver_path: /usr/local/bin/geckodriver
+  driver_path: "/path/to/geckodriver"
+  timeout: 15
