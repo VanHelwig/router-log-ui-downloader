@@ -12,4 +12,4 @@ xpaths:
 
 settings:
   driver_path: "/path/to/geckodriver"
-  timeout: 15
+  timeout: 5
