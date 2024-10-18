@@ -69,7 +69,7 @@ settings:
 After configuring the YAML file, you can automate the entire process by running the provided shell script. This script will first run the Python script to download the logs, and then transfer the downloaded logs using the Bash script.
 
 ```bash
-./routerlogworkdlow.sh
+./routerlogworkflow.sh
 ```
 
 This shell script includes:
