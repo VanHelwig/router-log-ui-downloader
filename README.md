@@ -1,6 +1,6 @@
-## README 
+## README
 
-````markdown
+```markdown
 # Router Log Downloader
 
 **Project Purpose:** Automates the login process to a router's web interface, navigates to a submenu, and downloads log files using Selenium WebDriver in Python. It also includes a Bash script for transferring router logs and a shell script to run both tasks in sequence.
@@ -135,7 +135,7 @@ This project is licensed under the MIT License
 ## Contributing
 
 Feel free to submit merge requests, issues, or feature requests. Your contributions are welcome!
-````
+```
 
 ### Summary of Updates:
 1. **Router Log Transfer Script**: Described what the transfer script does and how it moves the logs to a specified location.
