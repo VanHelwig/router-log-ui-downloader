@@ -1,6 +1,4 @@
-
-
-## Updated README 
+## README 
 
 ```markdown
 # Router Log Downloader
