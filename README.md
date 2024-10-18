@@ -42,7 +42,7 @@ Download and install GeckoDriver from [here](https://github.com/mozilla/geckodri
 
 ```bash
 git clone https://github.com/VanHelwig/routerwebinterfacelogdownloader
-cd router-log-downloader
+cd routerwebinterfacelogdownloader
 ```
 
 ### Step 3: Configure the YAML File
@@ -72,7 +72,7 @@ settings:
 After configuring the YAML file, you can automate the entire process by running the provided shell script. This script will first run the Python script to download the logs, and then transfer the downloaded logs using the Bash script.
 
 ```bash
-./run_routerlog_tasks.sh
+./routerlogworkdlow.sh
 ```
 
 This shell script includes:
@@ -114,7 +114,7 @@ for file in $(ls $SOURCE_DIR/syslog-*); do
 done
 ```
 
-### Shell Script (routerlogworkslow.sh)
+### Shell Script (routerlogworkflow.sh)
 
 This script runs both the Python download script and the Bash transfer script sequentially:
 
@@ -141,7 +141,7 @@ Feel free to submit merge requests, issues, or feature requests. Your contributi
 
 ### Summary of Updates:
 1. **Router Log Transfer Script**: Described what the transfer script does and how it moves the logs to a specified location.
-2. **Shell Script**: Added instructions on how to run the Python and Bash scripts together using a shell script.
+2. **Shell Script**: Added instructions on how to run the Python and Bash scripts together using a workflow shell script.
 3. **Script Explanations**: Provided detailed descriptions of each script and how they work together.
 
 Let me know if you need any further adjustments!
