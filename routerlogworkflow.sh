@@ -10,7 +10,11 @@ if [[ -z "${ROUTER_PASSWORD}" ]]; then
 fi
 
 # Run the Python script to download router logs
+log "Running Python script to download router logs..."
 python3 ./downloadrouterlogs.py
+log "Python script completed."
 
 # Run the Bash script to transfer the logs
-sudo bash ./routerlogtransfer.sh
+log "Running Bash script to transfer logs..."
+sudo ./routerlogtransfer.sh
+log "Workflow completed successfully."
