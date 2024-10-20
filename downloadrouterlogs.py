@@ -21,13 +21,13 @@ with open(config_path, 'r') as config_file:
 
 # Access the variables from the YAML configuration
 router_ip = config['router']['ip']
-router_password = config['router']['password']
+router_password = os.getenv('ROUTER_PASSWORD')
 router_url = config['urls']['router_url']
 submenu_url = config['urls']['submenu']
 password_field_xpath = config['xpaths']['password_field']
 download_button_xpath = config['xpaths']['download_button']
 driver_path = config['settings']['driver_path']
-timeout = config['settings'].get('timeout', 10)  # Make timeout configurable via YAML, default is 10 seconds
+timeout = config['settings'].get('timeout', 5)
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
