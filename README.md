@@ -158,7 +158,7 @@ if [[ -z "${ROUTER_PASSWORD}" ]]; then
 fi
 
 # Run the Python script to download router logs
-/home/user/Scripts/Python/downloadrouterlogs2.py
+/home/user/Scripts/Python/downloadrouterlogs.py
 
 # Run the Bash script to transfer the logs
 sudo /home/user/Scripts/Bash/routerlogtransfer.sh
