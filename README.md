@@ -10,7 +10,7 @@ This project allows you to:
 
 - Automatically retrieve and download log files from a router's web interface.
 - Transfer logs using a Bash script to a specified location.
-- Automate both tasks together using a shell script.
+- Automate both tasks together using a Bash script.
 
 ---
 
@@ -23,7 +23,7 @@ This project allows you to:
 - Mozilla Firefox browser
 - GeckoDriver for Selenium
 - PyYAML Python package
-- Bash shell (for log transfer and shell script)
+- Bash shell (for log transfer and worksflow script)
 
 ### Step 1: Install Dependencies
 
