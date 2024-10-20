@@ -1,14 +1,14 @@
-router:
-  ip: "192.168.1.1"
+router: 
+  ip: "<your_router_ip>"  # Placeholder for router IP
 
 urls:
-  router_url: "http://192.168.1.1/login"
-  submenu: "http://192.168.1.1/submenu"
+  router_url: "http://<your_router_ip>"  # Placeholder for router login URL
+  submenu: "http://<your_router_ip>/webpages/index.html#sysLog"  # Placeholder for submenu page
 
 xpaths:
-  password_field: '//*[@id="password"]'
-  download_button: '//*[@id="download"]'
+  password_field: "<your_password_field_xpath>"  # Placeholder for password field XPath
+  download_button: "<your_download_button_xpath>"  # Placeholder for download button XPath
 
-settings:
-  driver_path: "/path/to/geckodriver"
-  timeout: 5
+settings: 
+  driver_path: "/usr/local/bin/geckodriver"  # Path to geckodriver (customizable)
+  timeout: 5  # Timeout for waiting for elements
