@@ -3,6 +3,11 @@
 # Exit immediately if a command exits with a non-zero status
 set -e
 
+# Log function to print messages with timestamp
+log() {
+    echo "$(date +'%Y-%m-%d %H:%M:%S') - $1"
+}
+
 # Ensure the environment variable ROUTER_PASSWORD is set
 if [[ -z "${ROUTER_PASSWORD}" ]]; then
     echo "Error: ROUTER_PASSWORD is not set."
