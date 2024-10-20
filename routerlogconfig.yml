@@ -1,6 +1,3 @@
-router: 
-  ip: "<your_router_ip>"  # Placeholder for router IP
-
 urls:
   router_url: "http://<your_router_ip>"  # Placeholder for router login URL
   submenu: "http://<your_router_ip>/webpages/index.html#sysLog"  # Placeholder for submenu page
