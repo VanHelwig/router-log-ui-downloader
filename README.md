@@ -42,28 +42,38 @@ git clone https://github.com/VanHelwig/router-log-ui-downloader
 cd router-log-ui-downloader
 ```
 
-### Step 3: Configure the YAML File
+### Step 3: Update the Python Script Configuration
 
-Update the YAML configuration file (`routerlogconfig.yml`) with your router's details (Note: the password should no longer be stored here):
+Open the `downloadrouterlogs.py` file and update the `config_path` variable to point to the actual location of your `routerlogconfig.yml` file. Replace `/path/to/your/routerlogconfig.yml` with the correct path:
+
+```python
+config_path = '/path/to/your/routerlogconfig.yml'
+```
+
+### Step 4: Configure the YAML File
+
+Update the YAML configuration file (`routerlogconfig.yml`) with your router's details. The password should not be stored here:
 
 ```yaml
 router:
-  ip: "192.168.1.1"
+  ip: "<your_router_ip>"
 
 urls:
-  router_url: "http://192.168.1.1/login"
-  submenu: "http://192.168.1.1/submenu"
+  router_url: "http://<your_router_ip>"
+  submenu: "http://<your_router_ip>/submenu"
 
 xpaths:
-  password_field: '//*[@id="password"]'
-  download_button: '//*[@id="download"]'
+  password_field: '<your_password_field_xpath>'
+  download_button: '<your_download_button_xpath>'
 
 settings:
   driver_path: "/path/to/geckodriver"
   timeout: 5  # Timeout in seconds
 ```
 
-### Step 4: Set the `ROUTER_PASSWORD` Environment Variable
+Make sure to replace the placeholders with your actual router details.
+
+### Step 5: Set the `ROUTER_PASSWORD` Environment Variable
 
 For security purposes, the router password is stored as an environment variable instead of in the YAML file. Set this environment variable before running the scripts:
 
@@ -91,7 +101,7 @@ For security purposes, the router password is stored as an environment variable 
 
 This ensures the password is retrieved securely from the environment when the Python script is executed.
 
-### Step 5: Configure Passwordless Sudo for Log Transfer
+### Step 6: Configure Passwordless Sudo for Log Transfer
 
 To avoid entering your password every time the log transfer script runs with `sudo`, you can configure your `sudoers` file to allow this specific command to be run without a password:
 
@@ -101,15 +111,15 @@ To avoid entering your password every time the log transfer script runs with `su
    sudo visudo
    ```
 
-2. Add the following line, replacing `user` with your username, changing the filepath to routerlogtransfer file:
+2. Add the following line, replacing `user` with your username, and changing the filepath to the location of the `routerlogtransfer.sh` file:
 
    ```bash
-   user ALL=(ALL) NOPASSWD: /home/user/Scripts/Bash/routerlogtransfer.sh
+   user ALL=(ALL) NOPASSWD: /path/to/routerlogtransfer.sh
    ```
 
 This allows the script to run with `sudo` without prompting for a password.
 
-### Step 6: Run the Workflow Script
+### Step 7: Run the Workflow Script
 
 After configuring everything, you can automate the entire process by running the provided shell script. This script will first run the Python script to download the logs, and then transfer the downloaded logs using the Bash script:
 
@@ -121,11 +131,11 @@ After configuring everything, you can automate the entire process by running the
 
 ## Scripts Overview
 
-### Python Script (downloadrouterlogs.py)
+### Python Script (`downloadrouterlogs.py`)
 
-This script automates the login to the router's web interface, navigates to the submenu, and downloads log files. The router password is securely retrieved from the `ROUTER_PASSWORD` environment variable, and configuration details like IP address, URLs, and element XPaths are stored in the YAML file.
+This script automates the login to the router's web interface, navigates to the submenu, and downloads log files. The router password is securely retrieved from the `ROUTER_PASSWORD` environment variable, and configuration details like IP address, URLs, and element XPaths are stored in the YAML file. The configuration file path must be manually updated in the script.
 
-### Bash Script (routerlogtransfer.sh)
+### Bash Script (`routerlogtransfer.sh`)
 
 This script transfers the downloaded log files from the default `~/Downloads` folder to the specified destination (`/var/log/routerlogs`):
 
@@ -133,18 +143,18 @@ This script transfers the downloaded log files from the default `~/Downloads` fo
 #!/bin/bash
 
 # Set source and destination directories
-SOURCE_DIR=/home/user/Downloads
-DEST_DIR=/var/log/routerlogs
+SOURCE_DIR="$HOME/Downloads"
+DEST_DIR="/var/log/routerlogs"
 
 # Move syslog files from source to destination
-for file in $(ls $SOURCE_DIR/syslog-*); do
-    if [ -e $file ]; then
-        mv -v $file $DEST_DIR
+for file in $(ls $SOURCE_DIR/syslog-* 2>/dev/null); do
+    if [ -e "$file" ]; then
+        mv -v "$file" "$DEST_DIR"
     fi
 done
 ```
 
-### Shell Script (routerlogworkflow.sh)
+### Bash Script (`routerlogworkflow.sh`)
 
 This script runs both the Python download script and the Bash transfer script sequentially:
 
@@ -158,27 +168,18 @@ if [[ -z "${ROUTER_PASSWORD}" ]]; then
 fi
 
 # Run the Python script to download router logs
-/home/user/Scripts/Python/downloadrouterlogs.py
+python3 ./downloadrouterlogs.py
 
 # Run the Bash script to transfer the logs
-sudo /home/user/Scripts/Bash/routerlogtransfer.sh
+sudo bash ./routerlogtransfer.sh
 ```
 
 ---
 
 ## License
 
-This project is licensed under the MIT License 
+This project is licensed under the MIT License.
 
 ## Contributing
 
 Feel free to submit merge requests, issues, or feature requests. Your contributions are welcome!
-
----
-
-### Summary of Updates:
-1. **Environment Variable**: Instructions added to securely set the `ROUTER_PASSWORD` as an environment variable.
-2. **Passwordless Sudo**: Steps added to configure passwordless sudo for running the log transfer script.
-3. **Updated Script Descriptions**: Modified descriptions to reflect changes in the workflow and how password management is handled.
-
-Let me know if this looks good or if you'd like any further modifications!
