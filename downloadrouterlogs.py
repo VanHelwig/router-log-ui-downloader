@@ -20,7 +20,6 @@ with open(config_path, 'r') as config_file:
     config = yaml.safe_load(config_file)
 
 # Access the variables from the YAML configuration
-router_ip = config['router']['ip']
 router_password = os.getenv('ROUTER_PASSWORD')  # Ensure router password is provided through environment variable
 router_url = config['urls']['router_url']
 submenu_url = config['urls']['submenu']
