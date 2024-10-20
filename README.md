@@ -38,7 +38,7 @@ Download and install GeckoDriver from [here](https://github.com/mozilla/geckodri
 ### Step 2: Clone the Repository
 
 ```bash
-git clone https://github.com/VanHelwig/routerwebinterfacelogdownloader
+git clone https://github.com/VanHelwig/router-log-ui-downloader
 cd routerwebinterfacelogdownloader
 ```
 
