@@ -55,9 +55,6 @@ config_path = '/path/to/your/routerlogconfig.yml'
 Update the YAML configuration file (`routerlogconfig.yml`) with your router's details. The password should not be stored here:
 
 ```yaml
-router:
-  ip: "<your_router_ip>"
-
 urls:
   router_url: "http://<your_router_ip>"
   submenu: "http://<your_router_ip>/submenu"
