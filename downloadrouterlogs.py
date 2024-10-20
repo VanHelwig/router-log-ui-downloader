@@ -14,20 +14,20 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 import glob
 
-# Load the YAML configuration file
-config_path = '/home/user/Scripts/Config/YAML/routerlogconfig.yml'
+# Load the YAML configuration file (hardcoded path)
+config_path = '/path/to/your/routerlogconfig.yml'  # Update this path with the actual location of your YAML config file
 with open(config_path, 'r') as config_file:
     config = yaml.safe_load(config_file)
 
 # Access the variables from the YAML configuration
 router_ip = config['router']['ip']
-router_password = os.getenv('ROUTER_PASSWORD')
+router_password = os.getenv('ROUTER_PASSWORD')  # Ensure router password is provided through environment variable
 router_url = config['urls']['router_url']
 submenu_url = config['urls']['submenu']
 password_field_xpath = config['xpaths']['password_field']
 download_button_xpath = config['xpaths']['download_button']
 driver_path = config['settings']['driver_path']
-timeout = config['settings'].get('timeout', 5)
+timeout = config['settings'].get('timeout', 10)
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
