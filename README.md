@@ -39,7 +39,7 @@ Download and install GeckoDriver from [here](https://github.com/mozilla/geckodri
 
 ```bash
 git clone https://github.com/VanHelwig/router-log-ui-downloader
-cd routerwebinterfacelogdownloader
+cd router-log-ui-downloader
 ```
 
 ### Step 3: Configure the YAML File
