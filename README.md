@@ -71,9 +71,17 @@ settings:
   timeout: 5  # Timeout in seconds
 ```
 
-Make sure to replace the placeholders with your actual router details.
+### Step 5: Set Permissions for Executable Files
 
-### Step 5: Set the `ROUTER_PASSWORD` Environment Variable
+To ensure the scripts can be executed, run the following command to set the correct permissions for all the executable files in one step:
+
+```bash
+chmod 744 downloadrouterlogs.py routerlogtransfer.sh routerlogworkflow.sh
+```
+
+The `routerlogconfig.yml` file will automatically have standard permissions (`644`), so there’s no need to modify it.
+
+### Step 6: Set the `ROUTER_PASSWORD` Environment Variable
 
 For security purposes, the router password is stored as an environment variable instead of in the YAML file. Set this environment variable before running the scripts:
 
@@ -101,7 +109,22 @@ For security purposes, the router password is stored as an environment variable 
 
 This ensures the password is retrieved securely from the environment when the Python script is executed.
 
-### Step 6: Configure Passwordless Sudo for Log Transfer
+### Step 7: Manually Update the Source Directory in `routerlogtransfer.sh`
+
+By default, the `routerlogtransfer.sh` script uses `$HOME/Downloads` as the source directory for the log files. If the script doesn't transfer files correctly using `$HOME`, you may need to manually update the `SOURCE_DIR` with the absolute path to your home directory.
+
+1. Open `routerlogtransfer.sh`.
+2. Manually replace the `SOURCE_DIR` variable with the absolute path to your `Downloads` folder. For example:
+
+   ```bash
+   # Set source and destination directories
+   SOURCE_DIR="/home/yourusername/Downloads"  # Replace this with the absolute path to your Downloads folder
+   DEST_DIR="/var/log/routerlogs"
+   ```
+
+3. Save the file.
+
+### Step 8: Configure Passwordless Sudo for Log Transfer
 
 To avoid entering your password every time the log transfer script runs with `sudo`, you can configure your `sudoers` file to allow this specific command to be run without a password:
 
@@ -119,7 +142,7 @@ To avoid entering your password every time the log transfer script runs with `su
 
 This allows the script to run with `sudo` without prompting for a password.
 
-### Step 7: Run the Workflow Script
+### Step 9: Run the Workflow Script
 
 After configuring everything, you can automate the entire process by running the provided shell script. This script will first run the Python script to download the logs, and then transfer the downloaded logs using the Bash script:
 
@@ -154,7 +177,7 @@ for file in $(ls $SOURCE_DIR/syslog-* 2>/dev/null); do
 done
 ```
 
-### Bash Script (`routerlogworkflow.sh`)
+### Shell Script (`routerlogworkflow.sh`)
 
 This script runs both the Python download script and the Bash transfer script sequentially:
 
