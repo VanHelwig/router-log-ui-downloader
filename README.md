@@ -79,8 +79,6 @@ To ensure the scripts can be executed, run the following command to set the corr
 chmod 744 downloadrouterlogs.py routerlogtransfer.sh routerlogworkflow.sh
 ```
 
-The `routerlogconfig.yml` file will automatically have standard permissions (`644`), so there’s no need to modify it.
-
 ### Step 6: Set the `ROUTER_PASSWORD` Environment Variable
 
 For security purposes, the router password is stored as an environment variable instead of in the YAML file. Set this environment variable before running the scripts:
@@ -90,7 +88,7 @@ For security purposes, the router password is stored as an environment variable 
    Run the following command to set the password for the current terminal session:
 
    ```bash
-   export ROUTER_PASSWORD="your_secure_password"
+   export ROUTER_PASSWORD="your_password"
    ```
 
 2. **Permanent (For All Sessions)**:
@@ -98,7 +96,7 @@ For security purposes, the router password is stored as an environment variable 
    Add the following line to your `~/.bashrc` or `~/.bash_profile` to set the environment variable permanently:
 
    ```bash
-   export ROUTER_PASSWORD="your_secure_password"
+   export ROUTER_PASSWORD="your_password"
    ```
 
    After adding, run:
@@ -119,7 +117,7 @@ By default, the `routerlogtransfer.sh` script uses `$HOME/Downloads` as the sour
    ```bash
    # Set source and destination directories
    SOURCE_DIR="/home/yourusername/Downloads"  # Replace this with the absolute path to your Downloads folder
-   DEST_DIR="/var/log/routerlogs"
+   DEST_DIR="/var/log/routerlogs" # This can be modified to your preference 
    ```
 
 3. Save the file.
@@ -184,17 +182,29 @@ This script runs both the Python download script and the Bash transfer script se
 ```bash
 #!/bin/bash
 
-# Ensure the environment variable is set
+# Exit immediately if a command exits with a non-zero status
+set -e
+
+# Log function to print messages with timestamp
+log() {
+    echo "$(date +'%Y-%m-%d %H:%M:%S') - $1"
+}
+
+# Ensure the environment variable ROUTER_PASSWORD is set
 if [[ -z "${ROUTER_PASSWORD}" ]]; then
     echo "Error: ROUTER_PASSWORD is not set."
     exit 1
 fi
 
 # Run the Python script to download router logs
+log "Running Python script to download router logs..."
 python3 ./downloadrouterlogs.py
+log "Python script completed."
 
 # Run the Bash script to transfer the logs
-sudo bash ./routerlogtransfer.sh
+log "Running Bash script to transfer logs..."
+sudo ./routerlogtransfer.sh
+log "Workflow completed successfully."
 ```
 
 ---
