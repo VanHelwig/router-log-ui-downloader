@@ -15,7 +15,7 @@ from selenium.webdriver.common.keys import Keys
 import glob
 
 # Load the YAML configuration file (hardcoded path)
-config_path = '/path/to/your/routerlogconfig.yml'  # Update this path with the actual location of your YAML config file
+config_path = '/path/routerlogconfig.yml'  # Update this path with the actual location of your YAML config file
 with open(config_path, 'r') as config_file:
     config = yaml.safe_load(config_file)
 
@@ -39,13 +39,13 @@ driver = webdriver.Firefox(service=service, options=options)
 # Function to wait for file download to complete
 def wait_for_download_completion(download_dir):
     logging.info('Waiting for download to complete...')
-    while any(glob.glob(f"{download_dir}/*.part")):  # Checking for incomplete files
+    while any(glob.glob(f'{download_dir}/*.part')):  # Checking for incomplete files
         time.sleep(1)
 
 # Navigate to router web UI and download logs locally
 try:
     # Capture the list of files before the download starts
-    download_dir = os.path.expanduser("~/Downloads")  # Default download location
+    download_dir = os.path.expanduser('~/Downloads')  # Default download location
     files_before = set(os.listdir(download_dir))
 
     # Navigate to the router login
@@ -89,7 +89,7 @@ try:
     logging.info(f'Newly downloaded files: {new_files}')
 
 except Exception as e:
-    logging.error(f"An error occurred: {e}")
+    logging.error(f'An error occurred: {e}')
 
 finally:
     # Close the browser
