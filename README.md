@@ -44,10 +44,10 @@ cd router-log-ui-downloader
 
 ### Step 3: Update the Python Script Configuration
 
-Open the `downloadrouterlogs.py` file and update the `config_path` variable to point to the actual location of your `routerlogconfig.yml` file. Replace `/path/to/your/routerlogconfig.yml` with the correct path:
+Open the `downloadrouterlogs.py` file and update the `config_path` variable to point to the actual location of your `routerlogconfig.yml` file. Replace `/path/routerlogconfig.yml` with the correct path:
 
 ```python
-config_path = '/path/to/your/routerlogconfig.yml'
+config_path = '/path/routerlogconfig.yml'
 ```
 
 ### Step 4: Configure the YAML File
@@ -56,15 +56,15 @@ Update the YAML configuration file (`routerlogconfig.yml`) with your router's de
 
 ```yaml
 urls:
-  router_url: "http://<your_router_ip>"
-  submenu: "http://<your_router_ip>/submenu"
+  router_url: "http://<router_ip>"
+  submenu: "http://<router_ip>/submenu"
 
 xpaths:
-  password_field: '<your_password_field_xpath>'
-  download_button: '<your_download_button_xpath>'
+  password_field: '<password_field_xpath>'
+  download_button: '<download_button_xpath>'
 
 settings:
-  driver_path: "/path/to/geckodriver"
+  driver_path: "/path/geckodriver"
   timeout: 5  # Timeout in seconds
 ```
 
@@ -85,7 +85,7 @@ For security purposes, the router password is stored as an environment variable 
    Run the following command to set the password for the current terminal session:
 
    ```bash
-   export ROUTER_PASSWORD="your_password"
+   export ROUTER_PASSWORD="password"
    ```
 
 2. **Permanent (For All Sessions)**:
@@ -93,7 +93,7 @@ For security purposes, the router password is stored as an environment variable 
    Add the following line to your `~/.bashrc` or `~/.bash_profile` to set the environment variable permanently:
 
    ```bash
-   export ROUTER_PASSWORD="your_password"
+   export ROUTER_PASSWORD="password"
    ```
 
    After adding, run:
@@ -113,7 +113,7 @@ By default, the `routerlogtransfer.sh` script uses `$HOME/Downloads` as the sour
 
    ```bash
    # Set source and destination directories
-   SOURCE_DIR="/home/yourusername/Downloads"  # Replace this with the absolute path to your Downloads folder
+   SOURCE_DIR="/home/username/Downloads"  # Replace this with the absolute path to your Downloads folder
    DEST_DIR="/var/log/routerlogs" # This can be modified to your preference 
    ```
 
@@ -132,7 +132,7 @@ To avoid entering your password every time the log transfer script runs with `su
 2. Add the following line, replacing `user` with your username, and changing the filepath to the location of the `routerlogtransfer.sh` file:
 
    ```bash
-   user ALL=(ALL) NOPASSWD: /path/to/routerlogtransfer.sh
+   user ALL=(ALL) NOPASSWD: /path/routerlogtransfer.sh
    ```
 
 This allows the script to run with `sudo` without prompting for a password.
