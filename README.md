@@ -56,15 +56,15 @@ Update the YAML configuration file (`routerlogconfig.yml`) with your router's de
 
 ```yaml
 urls:
-  router_url: "http://<router_ip>"
-  submenu: "http://<router_ip>/submenu"
+  router_url: 'http://<router_ip>'
+  submenu: 'http://<router_ip>/submenu'
 
 xpaths:
   password_field: '<password_field_xpath>'
   download_button: '<download_button_xpath>'
 
 settings:
-  driver_path: "/path/geckodriver"
+  driver_path: '/path/geckodriver'
   timeout: 5  # Timeout in seconds
 ```
 
@@ -85,7 +85,7 @@ For security purposes, the router password is stored as an environment variable 
    Run the following command to set the password for the current terminal session:
 
    ```bash
-   export ROUTER_PASSWORD="password"
+   export ROUTER_PASSWORD='password'
    ```
 
 2. **Permanent (For All Sessions)**:
@@ -93,7 +93,7 @@ For security purposes, the router password is stored as an environment variable 
    Add the following line to your `~/.bashrc` or `~/.bash_profile` to set the environment variable permanently:
 
    ```bash
-   export ROUTER_PASSWORD="password"
+   export ROUTER_PASSWORD='password'
    ```
 
    After adding, run:
@@ -113,8 +113,8 @@ By default, the `routerlogtransfer.sh` script uses `$HOME/Downloads` as the sour
 
    ```bash
    # Set source and destination directories
-   SOURCE_DIR="/home/username/Downloads"  # Replace this with the absolute path to your Downloads folder
-   DEST_DIR="/var/log/routerlogs" # This can be modified to your preference 
+   SOURCE_DIR='/home/username/Downloads'  # Replace this with the absolute path to your Downloads folder
+   DEST_DIR='/var/log/routerlogs' # This can be modified to your preference 
    ```
 
 3. Save the file.
@@ -161,13 +161,13 @@ This script transfers the downloaded log files from the default `~/Downloads` fo
 #!/bin/bash
 
 # Set source and destination directories
-SOURCE_DIR="$HOME/Downloads"
-DEST_DIR="/var/log/routerlogs"
+SOURCE_DIR='$HOME/Downloads'
+DEST_DIR='/var/log/routerlogs'
 
 # Move syslog files from source to destination
 for file in $(ls $SOURCE_DIR/syslog-* 2>/dev/null); do
-    if [ -e "$file" ]; then
-        mv -v "$file" "$DEST_DIR"
+    if [ -e '$file' ]; then
+        mv -v '$file' '$DEST_DIR'
     fi
 done
 ```
@@ -188,20 +188,20 @@ log() {
 }
 
 # Ensure the environment variable ROUTER_PASSWORD is set
-if [[ -z "${ROUTER_PASSWORD}" ]]; then
-    echo "Error: ROUTER_PASSWORD is not set."
+if [[ -z '${ROUTER_PASSWORD}' ]]; then
+    echo 'Error: ROUTER_PASSWORD is not set.'
     exit 1
 fi
 
 # Run the Python script to download router logs
-log "Running Python script to download router logs..."
+log 'Running Python script to download router logs...'
 python3 ./downloadrouterlogs.py
-log "Python script completed."
+log 'Python script completed.'
 
 # Run the Bash script to transfer the logs
-log "Running Bash script to transfer logs..."
+log 'Running Bash script to transfer logs...'
 sudo ./routerlogtransfer.sh
-log "Workflow completed successfully."
+log 'Workflow completed successfully.'
 ```
 
 ---
