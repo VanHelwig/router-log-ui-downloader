@@ -5,6 +5,7 @@ import yaml
 import os
 import time
 import logging
+import glob
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.service import Service
@@ -12,7 +13,6 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
-import glob
 
 # Load the YAML configuration file (hardcoded path)
 config_path = '/path/routerlogconfig.yml'  # Update this path with the actual location of your YAML config file
