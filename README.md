@@ -23,7 +23,7 @@ This project allows you to:
 - Mozilla Firefox browser
 - GeckoDriver for Selenium
 - PyYAML Python package
-- Bash shell (for log transfer and worksflow script)
+- Bash shell (for log transfer and workflow script)
 
 ### Step 1: Install Dependencies
 
