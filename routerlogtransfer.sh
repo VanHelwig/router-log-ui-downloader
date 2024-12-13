@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Sets source and destination directories (customize these paths)
-SOURCE_DIR='$HOME/Downloads'  # Default to user's Downloads directory
+SOURCE_DIR='~/Downloads'  # Default to user's Downloads directory
 DEST_DIR='/var/log/routerlogs'  # This can be modified to your preference 
 
 # Loops through router syslog files in the source directory
