@@ -73,7 +73,7 @@ settings:
 To ensure the scripts can be executed, run the following command to set the correct permissions for all the executable files in one step:
 
 ```bash
-chmod 744 downloadrouterlogs.py routerlogtransfer.sh routerlogworkflow.sh
+chmod 700 downloadrouterlogs.py routerlogtransfer.sh routerlogworkflow.sh
 ```
 
 ### Step 6: Set the `ROUTER_PASSWORD` Environment Variable
@@ -113,7 +113,7 @@ By default, the `routerlogtransfer.sh` script uses `$HOME/Downloads` as the sour
 
    ```bash
    # Set source and destination directories
-   SOURCE_DIR='/home/username/Downloads'  # Replace this with the absolute path to your Downloads folder
+   SOURCE_DIR='~/Downloads'  # Replace this with the absolute path to your Downloads folder
    DEST_DIR='/var/log/routerlogs' # This can be modified to your preference 
    ```
 
@@ -161,7 +161,7 @@ This script transfers the downloaded log files from the default `~/Downloads` fo
 #!/bin/bash
 
 # Set source and destination directories
-SOURCE_DIR='$HOME/Downloads'
+SOURCE_DIR='~/Downloads'
 DEST_DIR='/var/log/routerlogs'
 
 # Move syslog files from source to destination
